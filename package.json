@@ -1,0 +1,17 @@
+{
+  "name": "drakobets",
+  "version": "1.0.0",
+  "description": "Sistema DrakoBets con seeders profesionales e índices optimizados para proyecto RAG con MongoDB.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "reset": "node src/app.js --reset"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.5.0"
+  }
+}
