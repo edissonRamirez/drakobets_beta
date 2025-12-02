@@ -1,7 +1,11 @@
+require("./config/env");       // ← carga .env ANTES QUE TODO
 const { connectDB, closeDB } = require("./config/db");
 const seedDatabase = require("./data");
 const createAllIndexes = require("./indexes");
 const logger = require("./utils/logger");
+const ragRoutes = require("./routes/rag.routes");
+
+app.use("/rag", ragRoutes);
 
 (async function init() {
   try {

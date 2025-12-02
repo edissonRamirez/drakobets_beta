@@ -1,0 +1,297 @@
+=====================================================
+               MANUAL CONTEXTUAL DRakobets
+=====================================================
+
+Drakobets es un sistema de apuestas deportivas, apuestas de casino
+y gestión de eventos competitivos. La plataforma se basa en MongoDB
+como almacenamiento principal y utiliza un sistema RAG con embeddings
+para permitir consultas inteligentes sobre su estructura, datos
+y funcionamiento.
+
+El sistema contiene varias entidades clave: Usuario, Transaccion,
+Apuesta, ApuestaCasino, Evento, Competencia, Jugador, Equipo y
+TipoApuesta. Cada entidad tiene una función clara dentro del ecosistema
+y forma parte del flujo general de apuestas y operaciones.
+
+A continuación se describe cada entidad con suficiente contexto para
+que un modelo de lenguaje pueda razonar correctamente.
+
+
+=====================================================
+1. ENTIDAD: USUARIO
+=====================================================
+
+La colección usuarios almacena toda la información de las personas que
+participan en la plataforma Drakobets.
+
+Campos típicos:
+- cedulausuario: Identificador único del usuario (string o número).
+- nombre: Nombre del usuario.
+- correo: Email del usuario.
+- telefono: Número de contacto.
+- saldo: Saldo actual disponible para apostar.
+- fechaRegistro: Fecha en la que se registró.
+- estado: Activo o inactivo.
+
+Rol dentro del sistema:
+- Cada usuario puede realizar apuestas.
+- Cada usuario puede recibir o gastar dinero mediante transacciones.
+- Las apuestas están asociadas de forma directa a un usuario.
+- Si el usuario no tiene saldo suficiente no puede apostar.
+- Las transacciones modifican el saldo del usuario.
+
+
+=====================================================
+2. ENTIDAD: TRANSACCION
+=====================================================
+
+La colección transacciones almacena todos los movimientos de saldo de
+los usuarios. Cada transacción es atómica e irreversible.
+
+Campos típicos:
+- _id: Identificador único.
+- cedulausuario: ID del usuario que realiza la transacción.
+- monto: Valor de la transacción.
+- tipo: "ingreso" o "retiro".
+- fecha: Fecha de ejecución.
+- descripcion: Motivo o detalle opcional.
+
+Rol dentro del sistema:
+- Representa ingresos (recargas) o retiros (retiros o descuentos).
+- Permite rastrear historial financiero.
+- Después de cada transacción, se actualiza el saldo del usuario.
+- Se usa para auditoría interna y control económico.
+
+Ejemplo:
+Una transacción de ingreso suma saldo al usuario.
+Una transacción de retiro resta saldo.
+
+
+=====================================================
+3. ENTIDAD: APUESTA
+=====================================================
+
+La colección apuestas almacena las apuestas deportivas que un usuario
+realiza en un evento o competencia.
+
+Campos típicos:
+- _id: ID del documento.
+- cedulausuario: Usuario que realiza la apuesta.
+- idEvento: Identificador del evento.
+- montoapostado: Monto de la apuesta.
+- resultado: "pending", "win", "lose".
+- fecha: Fecha de la apuesta.
+
+Rol dentro del sistema:
+- Registra todas las apuestas deportivas.
+- La apuesta pertenece a un usuario y a un evento.
+- El resultado se actualiza cuando el evento finaliza.
+- Si la apuesta es ganada, puede generar una transacción de ingreso.
+
+Flujo típico:
+1. El usuario selecciona un evento disponible.
+2. El usuario apuesta un monto (que debe estar dentro de su saldo).
+3. El sistema congela el valor apostado.
+4. Cuando termina el evento, se calcula el resultado.
+5. Si gana, su saldo aumenta; si pierde, se descuenta.
+
+
+=====================================================
+4. ENTIDAD: APUESTACASINO
+=====================================================
+
+La colección apuestaCasino registra apuestas en modalidades de casino
+(juegos instantáneos).
+
+Campos típicos:
+- _id
+- cedulausuario
+- juego: nombre del juego (ruleta, slots, blackjack, etc.)
+- monto: monto apostado
+- resultado: win/lose
+- fechahora
+
+Diferencias respecto a apuestas deportivas:
+- No dependen de eventos externos.
+- El resultado se determina inmediatamente.
+- Pueden ser múltiples rondas rápidas.
+- Generan una experiencia más instantánea.
+
+
+=====================================================
+5. ENTIDAD: EVENTO
+=====================================================
+
+La colección eventos almacena la información de eventos deportivos que
+pueden ser objeto de apuestas.
+
+Campos típicos:
+- _id
+- nombre: nombre del evento.
+- fechaInicio
+- fechaFin
+- estado: scheduled, ongoing, finished
+- participantes: lista de jugadores o equipos.
+- tipo: categoría del evento (fútbol, baloncesto, esports, etc.)
+
+Rol:
+- Cada evento contiene una competencia o múltiples competencias.
+- Cuando un evento finaliza, se evalúan todas las apuestas asociadas.
+
+
+=====================================================
+6. ENTIDAD: COMPETENCIA
+=====================================================
+
+La colección competencia registra una instancia específica dentro de un
+evento donde se genera un resultado.
+
+Campos típicos:
+- _id
+- idEvento: referencia al evento
+- jugador1 / jugador2 o equipo1 / equipo2
+- marcadorFinal
+- fecha
+- estado: "scheduled", "finished"
+
+Rol:
+- Sirve para determinar el resultado final que afecta las apuestas.
+- Puede haber múltiples competencias dentro de un mismo evento.
+- Se usa en deportes que tienen rondas, partidos o enfrentamientos.
+
+Ejemplo:
+Un evento "Liga Colombiana" puede contener varias competencias:
+- Partido 1: Nacional vs Millonarios
+- Partido 2: Cali vs Tolima
+
+
+=====================================================
+7. ENTIDAD: TIPOAPUESTA
+=====================================================
+
+Representa el tipo de apuesta (si aplica para apuestas deportivas):
+
+- ganador: apostar quién gana.
+- marcadorExacto: apostar el resultado preciso.
+- over/under: apostar si un valor supera un umbral.
+- handicap: apuesta con ventaja o desventaja.
+
+Este tipo puede modificar la forma en que se calcula el resultado.
+
+
+=====================================================
+8. ENTIDAD: EQUIPO
+=====================================================
+
+Los equipos representan participantes colectivos.
+
+Campos típicos:
+- nombre
+- ciudad
+- idJugadores: lista de jugadores pertenecientes al equipo
+
+Relación:
+- Un equipo puede tener muchos jugadores.
+- Un jugador pertenece a un equipo.
+
+
+=====================================================
+9. ENTIDAD: JUGADOR
+=====================================================
+
+Campos típicos:
+- nombre
+- posicion
+- equipo (ID del equipo actual)
+
+Relación:
+- Se usa para completar información detallada de competencias.
+
+
+=====================================================
+10. FLUJO COMPLETO DE UNA APUESTA DEPORTIVA
+=====================================================
+
+1. El usuario inicia sesión con su cédula.
+2. El usuario revisa eventos disponibles.
+3. Selecciona una competencia.
+4. Elige un tipo de apuesta.
+5. Ingresa un monto.
+6. El sistema revisa si tiene saldo suficiente.
+7. Se registra la apuesta en la colección "apuestas".
+8. Cuando el evento termina:
+   - Se compara el resultado real con la apuesta.
+   - Si la apuesta es ganada:
+       * Se crea una transacción de ingreso.
+       * Se actualiza el saldo del usuario.
+   - Si la apuesta es perdida:
+       * No se devuelve el valor apostado.
+9. El usuario puede revisar historial.
+
+Este flujo debe estar claro para que el LLM pueda razonar sobre preguntas
+de funcionamiento.
+
+
+=====================================================
+11. FLUJO COMPLETO DE UNA APUESTA DE CASINO
+=====================================================
+
+1. El usuario escoge un juego de casino.
+2. Indica monto a apostar.
+3. Se verifica el saldo.
+4. Se genera el resultado instantáneo del juego.
+5. Se registra la apuesta en "apuestaCasino".
+6. Si gana:
+   - Nueva transacción de ingreso.
+7. Si pierde:
+   - Saldo disminuye.
+
+Son apuestas instantáneas, sin esperar resultados de terceros.
+
+
+=====================================================
+12. CONSULTAS FRECUENTES QUE EL RAG DEBE ENTENDER
+=====================================================
+
+- ¿Qué es una competencia?
+- ¿Cómo funciona una apuesta?
+- ¿Qué colecciones tiene Drakobets?
+- ¿Cómo se relacionan apuestas y transacciones?
+- ¿Qué tipos de apuestas existen?
+- ¿Qué campos tiene la colección eventos?
+- ¿Cómo saber cuántos documentos hay en apuestas?
+- ¿Qué representa una transacción?
+- ¿Cuál es la diferencia entre Apuesta y ApuestaCasino?
+- ¿Qué información contiene un usuario?
+
+El RAG debe responder basado en este manual.
+
+
+=====================================================
+13. LOOKUPS Y RELACIONES
+=====================================================
+
+- Una apuesta → pertenece a → un usuario
+- Una apuesta → depende de → un evento
+- Una competencia → pertenece a → un evento
+- Un evento → contiene → muchas competencias
+- Una transacción → pertenece a → un usuario
+- Un usuario → tiene → muchas transacciones
+- Un usuario → puede tener → muchas apuestas
+- Un equipo → tiene → muchos jugadores
+
+Estas relaciones ayudan al LLM a responder preguntas complejas.
+
+
+=====================================================
+14. OBSERVACIONES PARA RAG
+=====================================================
+
+- El modelo solo debe responder con base en este contexto.
+- El modelo no debe inventar datos históricos.
+- Si un valor no está aquí, debe decir “no tengo información”.
+- Este contexto se divide en chunks y embeddings para vector search.
+
+=====================================================
+END OF FILE
+=====================================================
