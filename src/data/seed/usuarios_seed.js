@@ -7,36 +7,46 @@ module.exports = async function usuariosSeed(db) {
   if (!(await isEmpty(col))) return await col.find().toArray();
 
   const usuarios = [
-    {
-      _id: new ObjectId(),
-      cedulausuario: "101050",
-      nombres: "Juan",
-      apellidos: "Perez",
-      correo: "juan@mail.com",
-      celular: "3001234567",
-      fechanacimiento: new Date("1990-01-01"),
-      bonos: [{ idbono: 1, montobono: 50, cedulausuario: "101010" }],
-      estadobono: {
-        idestadobono: 1,
-        estadobono: "activo",
-        fechavencimiento: new Date("2024-12-31")
-      }
-    },
-    {
-      _id: new ObjectId(),
-      cedulausuario: "202020",
-      nombres: "Maria",
-      apellidos: "Gomez",
-      correo: "maria@mail.com",
-      celular: "3109876543",
-      fechanacimiento: new Date("1995-05-15"),
-      bonos: [],
-      estadobono: {
-        idestadobono: 2,
-        estadobono: "inactivo",
-        fechavencimiento: new Date("2023-01-01")
-      }
-    }
+    { _id: new ObjectId(), cedulausuario: "100001", nombres: "Juan", apellidos: "Perez", correo: "juan1@mail.com", celular: "3000000001", fechanacimiento: new Date("1990-01-01"), bonos: [{ idbono: 1, montobono: 50, cedulausuario: "100001" }], estadobono: { idestadobono: 1, estadobono: "activo", fechavencimiento: new Date("2026-12-31") } },
+    { _id: new ObjectId(), cedulausuario: "100002", nombres: "Maria", apellidos: "Gomez", correo: "maria2@mail.com", celular: "3000000002", fechanacimiento: new Date("1995-05-15"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100003", nombres: "Carlos", apellidos: "Rodríguez", correo: "carlos3@mail.com", celular: "3000000003", fechanacimiento: new Date("1988-03-20"), bonos: [{ idbono: 3, montobono: 30, cedulausuario: "100003" }], estadobono: { idestadobono: 1, estadobono: "activo", fechavencimiento: new Date("2026-12-31") } },
+    { _id: new ObjectId(), cedulausuario: "100004", nombres: "Ana", apellidos: "López", correo: "ana4@mail.com", celular: "3000000004", fechanacimiento: new Date("1992-07-08"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100005", nombres: "Luis", apellidos: "García", correo: "luis5@mail.com", celular: "3000000005", fechanacimiento: new Date("1985-11-11"), bonos: [{ idbono: 5, montobono: 40, cedulausuario: "100005" }], estadobono: { idestadobono: 1, estadobono: "activo", fechavencimiento: new Date("2026-12-31") } },
+    { _id: new ObjectId(), cedulausuario: "100006", nombres: "Sofía", apellidos: "Martínez", correo: "sofia6@mail.com", celular: "3000000006", fechanacimiento: new Date("1998-02-02"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100007", nombres: "Pedro", apellidos: "Santos", correo: "pedro7@mail.com", celular: "3000000007", fechanacimiento: new Date("1991-09-09"), bonos: [{ idbono: 7, montobono: 60, cedulausuario: "100007" }], estadobono: { idestadobono: 1, estadobono: "activo", fechavencimiento: new Date("2026-12-31") } },
+    { _id: new ObjectId(), cedulausuario: "100008", nombres: "Lucía", apellidos: "Díaz", correo: "lucia8@mail.com", celular: "3000000008", fechanacimiento: new Date("1996-12-12"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100009", nombres: "Diego", apellidos: "Pérez", correo: "diego9@mail.com", celular: "3000000009", fechanacimiento: new Date("1987-04-04"), bonos: [{ idbono: 9, montobono: 25, cedulausuario: "100009" }], estadobono: { idestadobono: 1, estadobono: "activo", fechavencimiento: new Date("2026-12-31") } },
+    { _id: new ObjectId(), cedulausuario: "100010", nombres: "Carolina", apellidos: "Ramírez", correo: "carolina10@mail.com", celular: "3000000010", fechanacimiento: new Date("1993-08-18"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100011", nombres: "Andrés", apellidos: "Torres", correo: "andres11@mail.com", celular: "3000000011", fechanacimiento: new Date("1989-06-06"), bonos: [{ idbono: 11, montobono: 35, cedulausuario: "100011" }], estadobono: { idestadobono: 1, estadobono: "activo", fechavencimiento: new Date("2026-12-31") } },
+    { _id: new ObjectId(), cedulausuario: "100012", nombres: "Gabriela", apellidos: "Vargas", correo: "gabriela12@mail.com", celular: "3000000012", fechanacimiento: new Date("1994-10-10"), bonos: [{ idbono: 12, montobono: 45, cedulausuario: "100012" }], estadobono: { idestadobono: 1, estadobono: "activo", fechavencimiento: new Date("2026-12-31") } },
+    { _id: new ObjectId(), cedulausuario: "100013", nombres: "Jorge", apellidos: "Muñoz", correo: "jorge13@mail.com", celular: "3000000013", fechanacimiento: new Date("1983-01-21"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100014", nombres: "Marta", apellidos: "Cruz", correo: "marta14@mail.com", celular: "3000000014", fechanacimiento: new Date("1979-05-05"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100015", nombres: "Daniel", apellidos: "Flores", correo: "daniel15@mail.com", celular: "3000000015", fechanacimiento: new Date("1997-11-30"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100016", nombres: "Paula", apellidos: "Alvarez", correo: "paula16@mail.com", celular: "3000000016", fechanacimiento: new Date("1990-02-14"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100017", nombres: "Ricardo", apellidos: "Molina", correo: "ricardo17@mail.com", celular: "3000000017", fechanacimiento: new Date("1986-07-07"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100018", nombres: "Natalia", apellidos: "Herrera", correo: "natalia18@mail.com", celular: "3000000018", fechanacimiento: new Date("1999-09-09"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100019", nombres: "Fernando", apellidos: "Suarez", correo: "fernando19@mail.com", celular: "3000000019", fechanacimiento: new Date("1984-03-03"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100020", nombres: "Isabel", apellidos: "Quintero", correo: "isabel20@mail.com", celular: "3000000020", fechanacimiento: new Date("1992-12-01"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100021", nombres: "Sergio", apellidos: "Ortega", correo: "sergio21@mail.com", celular: "3000000021", fechanacimiento: new Date("1982-06-16"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100022", nombres: "Elena", apellidos: "Velez", correo: "elena22@mail.com", celular: "3000000022", fechanacimiento: new Date("1991-10-02"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100023", nombres: "Andres", apellidos: "Mendez", correo: "andres23@mail.com", celular: "3000000023", fechanacimiento: new Date("1990-08-08"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100024", nombres: "Camila", apellidos: "Rojas", correo: "camila24@mail.com", celular: "3000000024", fechanacimiento: new Date("1996-04-04"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100025", nombres: "Pablo", apellidos: "Núñez", correo: "pablo25@mail.com", celular: "3000000025", fechanacimiento: new Date("1981-02-28"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100026", nombres: "Marina", apellidos: "Paredes", correo: "marina26@mail.com", celular: "3000000026", fechanacimiento: new Date("1997-07-07"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100027", nombres: "Hugo", apellidos: "Vargas", correo: "hugo27@mail.com", celular: "3000000027", fechanacimiento: new Date("1980-09-17"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100028", nombres: "Adriana", apellidos: "Cano", correo: "adriana28@mail.com", celular: "3000000028", fechanacimiento: new Date("1993-03-12"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100029", nombres: "Victor", apellidos: "Suarez", correo: "victor29@mail.com", celular: "3000000029", fechanacimiento: new Date("1987-05-25"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100030", nombres: "Olga", apellidos: "Salazar", correo: "olga30@mail.com", celular: "3000000030", fechanacimiento: new Date("1994-12-12"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100031", nombres: "Rafael", apellidos: "Mora", correo: "rafael31@mail.com", celular: "3000000031", fechanacimiento: new Date("1989-11-11"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100032", nombres: "Valeria", apellidos: "Ruiz", correo: "valeria32@mail.com", celular: "3000000032", fechanacimiento: new Date("1991-01-01"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100033", nombres: "Mario", apellidos: "Beltrán", correo: "mario33@mail.com", celular: "3000000033", fechanacimiento: new Date("1986-06-06"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100034", nombres: "Lorena", apellidos: "Campos", correo: "lorena34@mail.com", celular: "3000000034", fechanacimiento: new Date("1998-08-08"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100035", nombres: "Nelson", apellidos: "Castro", correo: "nelson35@mail.com", celular: "3000000035", fechanacimiento: new Date("1978-09-09"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100036", nombres: "Melissa", apellidos: "Lopez", correo: "melissa36@mail.com", celular: "3000000036", fechanacimiento: new Date("1995-07-07"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100037", nombres: "Oscar", apellidos: "Pinto", correo: "oscar37@mail.com", celular: "3000000037", fechanacimiento: new Date("1985-05-05"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100038", nombres: "Paola", apellidos: "Figueroa", correo: "paola38@mail.com", celular: "3000000038", fechanacimiento: new Date("1990-10-10"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100039", nombres: "Raúl", apellidos: "Diaz", correo: "raul39@mail.com", celular: "3000000039", fechanacimiento: new Date("1984-02-02"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } },
+    { _id: new ObjectId(), cedulausuario: "100040", nombres: "Elisa", apellidos: "Gonzalez", correo: "elisa40@mail.com", celular: "3000000040", fechanacimiento: new Date("1992-09-09"), bonos: [], estadobono: { idestadobono: 2, estadobono: "inactivo", fechavencimiento: new Date("2022-01-01") } }
   ];
 
   await col.insertMany(usuarios);
