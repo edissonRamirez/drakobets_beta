@@ -7,34 +7,48 @@ module.exports = async function competenciasSeed(db) {
   if (!(await isEmpty(col))) return await col.find().toArray();
 
   const competencias = [
-    {
-      _id: new ObjectId(),
-      nombrecompetencia: "Champions League",
-      fechainicio: new Date("2023-09-01"),
-      fechafin: new Date("2024-06-01"),
-      descripcion: "Torneo de clubes europeos",
-      deporte: {
-        iddeporte: 1,
-        nombredeporte: "Futbol",
-        reglas: "FIFA",
-        descripciondeporte: "11 vs 11"
-      },
-      logo: "champions.png"
-    },
-    {
-      _id: new ObjectId(),
-      nombrecompetencia: "NBA",
-      fechainicio: new Date("2023-10-01"),
-      fechafin: new Date("2024-06-20"),
-      descripcion: "Baloncesto profesional USA",
-      deporte: {
-        iddeporte: 2,
-        nombredeporte: "Baloncesto",
-        reglas: "FIBA/NBA",
-        descripciondeporte: "5 vs 5"
-      },
-      logo: "nba.png"
-    }
+    { _id: new ObjectId(), nombrecompetencia: "Champions League", fechainicio: new Date("2023-09-01"), fechafin: new Date("2024-06-01"), descripcion: "Torneo de clubes europeos", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "champions.png" },
+    { _id: new ObjectId(), nombrecompetencia: "NBA", fechainicio: new Date("2023-10-01"), fechafin: new Date("2024-06-20"), descripcion: "Baloncesto profesional USA", deporte: { iddeporte: 2, nombredeporte: "Baloncesto", reglas: "FIBA/NBA", descripciondeporte: "5 vs 5" }, logo: "nba.png" },
+    { _id: new ObjectId(), nombrecompetencia: "La Liga", fechainicio: new Date("2023-08-15"), fechafin: new Date("2024-05-25"), descripcion: "Liga de fútbol español", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "laliga.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Premier League", fechainicio: new Date("2023-08-12"), fechafin: new Date("2024-05-19"), descripcion: "Liga de fútbol inglés", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "pl.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Serie A", fechainicio: new Date("2023-08-19"), fechafin: new Date("2024-05-26"), descripcion: "Liga de fútbol italiano", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "seriea.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Ligue 1", fechainicio: new Date("2023-08-05"), fechafin: new Date("2024-05-25"), descripcion: "Liga de fútbol francés", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "ligue1.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Bundesliga", fechainicio: new Date("2023-08-18"), fechafin: new Date("2024-05-18"), descripcion: "Liga de fútbol alemán", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "bundesliga.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Eredivisie", fechainicio: new Date("2023-08-12"), fechafin: new Date("2024-05-26"), descripcion: "Liga de fútbol holandés", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "eredivisie.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Copa del Rey", fechainicio: new Date("2023-08-01"), fechafin: new Date("2024-05-10"), descripcion: "Copa española de fútbol", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "copadel.png" },
+    { _id: new ObjectId(), nombrecompetencia: "FA Cup", fechainicio: new Date("2023-08-29"), fechafin: new Date("2024-06-03"), descripcion: "Copa inglesa de fútbol", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "facup.png" },
+    { _id: new ObjectId(), nombrecompetencia: "NFL", fechainicio: new Date("2023-09-07"), fechafin: new Date("2024-02-11"), descripcion: "Liga de fútbol americano USA", deporte: { iddeporte: 3, nombredeporte: "Fútbol Americano", reglas: "NFL", descripciondeporte: "11 vs 11" }, logo: "nfl.png" },
+    { _id: new ObjectId(), nombrecompetencia: "MLB", fechainicio: new Date("2024-03-28"), fechafin: new Date("2024-10-02"), descripcion: "Liga de béisbol profesional USA", deporte: { iddeporte: 4, nombredeporte: "Béisbol", reglas: "MLB", descripciondeporte: "9 vs 9" }, logo: "mlb.png" },
+    { _id: new ObjectId(), nombrecompetencia: "NHL", fechainicio: new Date("2023-10-10"), fechafin: new Date("2024-06-24"), descripcion: "Liga de hockey sobre hielo", deporte: { iddeporte: 5, nombredeporte: "Hockey", reglas: "NHL", descripciondeporte: "6 vs 6" }, logo: "nhl.png" },
+    { _id: new ObjectId(), nombrecompetencia: "ATP", fechainicio: new Date("2024-01-01"), fechafin: new Date("2024-11-30"), descripcion: "Tour de tenis masculino", deporte: { iddeporte: 6, nombredeporte: "Tenis", reglas: "ITF", descripciondeporte: "1 vs 1" }, logo: "atp.png" },
+    { _id: new ObjectId(), nombrecompetencia: "WTA", fechainicio: new Date("2024-01-01"), fechafin: new Date("2024-11-30"), descripcion: "Tour de tenis femenino", deporte: { iddeporte: 6, nombredeporte: "Tenis", reglas: "ITF", descripciondeporte: "1 vs 1" }, logo: "wta.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Wimbledon", fechainicio: new Date("2024-06-24"), fechafin: new Date("2024-07-14"), descripcion: "Campeonato de tenis en hierba", deporte: { iddeporte: 6, nombredeporte: "Tenis", reglas: "ITF", descripciondeporte: "1 vs 1" }, logo: "wimbledon.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Libertadores", fechainicio: new Date("2024-01-30"), fechafin: new Date("2024-11-30"), descripcion: "Copa de clubes sudamericanos", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "libertadores.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Serie A Brasileira", fechainicio: new Date("2024-04-13"), fechafin: new Date("2024-11-10"), descripcion: "Liga de fútbol brasileño", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "seriabra.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Liga MX", fechainicio: new Date("2024-01-12"), fechafin: new Date("2024-10-27"), descripcion: "Liga de fútbol mexicano", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "ligamx.png" },
+    { _id: new ObjectId(), nombrecompetencia: "MLS", fechainicio: new Date("2024-02-24"), fechafin: new Date("2024-12-07"), descripcion: "Liga de fútbol USA", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "mls.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Super Lig", fechainicio: new Date("2023-08-12"), fechafin: new Date("2024-05-26"), descripcion: "Liga de fútbol turco", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "superlig.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Super League", fechainicio: new Date("2023-08-12"), fechafin: new Date("2024-05-12"), descripcion: "Liga de fútbol griego", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "superl.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Ekstraklasa", fechainicio: new Date("2023-07-22"), fechafin: new Date("2024-06-02"), descripcion: "Liga de fútbol polaco", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "ekstra.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Czech Liga", fechainicio: new Date("2023-07-29"), fechafin: new Date("2024-06-02"), descripcion: "Liga de fútbol checo", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "czechl.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Liga 1", fechainicio: new Date("2023-07-23"), fechafin: new Date("2024-06-02"), descripcion: "Liga de fútbol rumano", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "liga1ro.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Allsvenskan", fechainicio: new Date("2024-03-29"), fechafin: new Date("2024-10-27"), descripcion: "Liga de fútbol sueco", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "allsvenskan.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Superligaen", fechainicio: new Date("2023-07-29"), fechafin: new Date("2024-06-02"), descripcion: "Liga de fútbol danés", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "superligaen.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Premjer Liga", fechainicio: new Date("2023-07-29"), fechafin: new Date("2024-06-09"), descripcion: "Liga de fútbol ruso", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "premjerliga.png" },
+    { _id: new ObjectId(), nombrecompetencia: "IPL", fechainicio: new Date("2024-03-22"), fechafin: new Date("2024-06-02"), descripcion: "Liga de cricket india", deporte: { iddeporte: 7, nombredeporte: "Cricket", reglas: "ICC", descripciondeporte: "11 vs 11" }, logo: "ipl.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Olimpiadas", fechainicio: new Date("2024-07-26"), fechafin: new Date("2024-08-11"), descripcion: "Juegos Olímpicos París 2024", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "olympics.png" },
+    { _id: new ObjectId(), nombrecompetencia: "World Cup", fechainicio: new Date("2022-11-20"), fechafin: new Date("2022-12-18"), descripcion: "Copa Mundial de Fútbol", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "worldcup.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Euros 2024", fechainicio: new Date("2024-06-14"), fechafin: new Date("2024-07-14"), descripcion: "Campeonato Europeo de Fútbol", deporte: { iddeporte: 1, nombredeporte: "Futbol", reglas: "FIFA", descripciondeporte: "11 vs 11" }, logo: "euros.png" },
+    { _id: new ObjectId(), nombrecompetencia: "PBA", fechainicio: new Date("2024-10-16"), fechafin: new Date("2025-01-26"), descripcion: "Liga de baloncesto filipina", deporte: { iddeporte: 2, nombredeporte: "Baloncesto", reglas: "FIBA/NBA", descripciondeporte: "5 vs 5" }, logo: "pba.png" },
+    { _id: new ObjectId(), nombrecompetencia: "ACB", fechainicio: new Date("2023-09-30"), fechafin: new Date("2024-06-16"), descripcion: "Liga de baloncesto español", deporte: { iddeporte: 2, nombredeporte: "Baloncesto", reglas: "FIBA", descripciondeporte: "5 vs 5" }, logo: "acb.png" },
+    { _id: new ObjectId(), nombrecompetencia: "EuroLeague", fechainicio: new Date("2023-10-03"), fechafin: new Date("2024-06-16"), descripcion: "Liga de baloncesto europea", deporte: { iddeporte: 2, nombredeporte: "Baloncesto", reglas: "FIBA", descripciondeporte: "5 vs 5" }, logo: "euroleague.png" },
+    { _id: new ObjectId(), nombrecompetencia: "UFC", fechainicio: new Date("2024-01-13"), fechafin: new Date("2024-12-14"), descripcion: "Liga de artes marciales mixtas", deporte: { iddeporte: 8, nombredeporte: "MMA", reglas: "UFC", descripciondeporte: "1 vs 1" }, logo: "ufc.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Boxing", fechainicio: new Date("2024-01-01"), fechafin: new Date("2024-12-31"), descripcion: "Campeonatos de boxeo mundial", deporte: { iddeporte: 9, nombredeporte: "Boxeo", reglas: "IBF/WBC", descripciondeporte: "1 vs 1" }, logo: "boxing.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Formula 1", fechainicio: new Date("2024-03-03"), fechafin: new Date("2024-12-08"), descripcion: "Campeonato mundial de F1", deporte: { iddeporte: 10, nombredeporte: "Automovilismo", reglas: "FIA", descripciondeporte: "Individual" }, logo: "f1.png" },
+    { _id: new ObjectId(), nombrecompetencia: "MotoGP", fechainicio: new Date("2024-03-10"), fechafin: new Date("2024-11-10"), descripcion: "Campeonato mundial de motociclismo", deporte: { iddeporte: 11, nombredeporte: "Motociclismo", reglas: "FIM", descripciondeporte: "Individual" }, logo: "motogp.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Wimbledon 2024", fechainicio: new Date("2024-06-24"), fechafin: new Date("2024-07-14"), descripcion: "Torneo de tenis sobre hierba", deporte: { iddeporte: 6, nombredeporte: "Tenis", reglas: "ITF", descripciondeporte: "1 vs 1" }, logo: "wimbledon2024.png" },
+    { _id: new ObjectId(), nombrecompetencia: "Roland Garros", fechainicio: new Date("2024-05-19"), fechafin: new Date("2024-06-09"), descripcion: "Torneo de tenis en arcilla", deporte: { iddeporte: 6, nombredeporte: "Tenis", reglas: "ITF", descripciondeporte: "1 vs 1" }, logo: "rolandgarros.png" },
+    { _id: new ObjectId(), nombrecompetencia: "US Open", fechainicio: new Date("2024-08-26"), fechafin: new Date("2024-09-09"), descripcion: "Torneo de tenis en pista rápida", deporte: { iddeporte: 6, nombredeporte: "Tenis", reglas: "ITF", descripciondeporte: "1 vs 1" }, logo: "usopen.png" }
   ];
 
   await col.insertMany(competencias);
