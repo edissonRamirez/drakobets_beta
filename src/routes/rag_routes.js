@@ -10,6 +10,7 @@ const {
 
 // Tu endpoint original:
 router.post("/ask", askRAG);
+router.post("/ask-image", askRAG);    // Usa mode:"image"
 
 // Endpoints formales:
 router.post("/text", askRAGText);

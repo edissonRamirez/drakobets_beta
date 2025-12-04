@@ -1,8 +1,8 @@
-const OpenAI = require("openai");
+const Groq = require("groq-sdk");
+require("dotenv").config();
 
-const client = new OpenAI({
+const client = new Groq({
   apiKey: process.env.GROQ_API_KEY,
-  baseURL: "https://api.groq.com/openai/v1"
 });
 
 async function askLLM(context, question) {
@@ -13,16 +13,17 @@ async function askLLM(context, question) {
   [QUESTION]
   ${question}
 
-  Responde SOLO usando el contexto. Si no hay suficiente información, dilo.
+  Responde SOLO usando el contexto.
+  Si falta información, dilo explícitamente.
   `;
 
-  const res = await client.chat.completions.create({
+  const response = await client.chat.completions.create({
     model: "llama-3.1-8b-instant",
     messages: [{ role: "user", content: prompt }],
-    temperature: 0.2
+    temperature: 0.2,
   });
 
-  return res.choices[0].message.content;
+  return response.choices[0].message.content;
 }
 
 module.exports = { askLLM };

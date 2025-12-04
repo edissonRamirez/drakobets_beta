@@ -8,7 +8,7 @@ const { askLLM } = require("./src/rag/llm/groq");
     const db = await connectDB();
 
     // 2) Pregunta del usuario — puedes cambiarla
-    const pregunta = "¿Qué lugar recomiendas para visitar en Colombia?";
+    const pregunta = "Dame el nombre de cualquier usuario";
 
     console.log("\n🔍 Ejecutando RAG para la pregunta:");
     console.log("   →", pregunta);
